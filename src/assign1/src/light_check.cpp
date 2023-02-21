@@ -34,7 +34,6 @@ private:
   void topic_callback(const sensor_msgs::msg::Image::SharedPtr msg) const
   {
     int threshold = this->get_parameter("threshold").as_int();
-    RCLCPP_INFO(this->get_logger(), "using threshold: %d", threshold);
 
     // Check the brightness of the image
     int sum = 0;

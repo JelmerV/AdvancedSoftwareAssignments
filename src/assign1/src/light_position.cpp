@@ -14,7 +14,7 @@ using std::placeholders::_1;
 class LightPosition : public rclcpp::Node
 {
 public:
-  LightPosition() : Node("light_check")
+  LightPosition() : Node("light_position")
   {
     this->declare_parameter("threshold", 100);
 
@@ -26,7 +26,8 @@ public:
     );
 
     // create a publisher to the topic "lights"
-    publisher_ = this->create_publisher<std_msgs::msg::String>("brightness", 10); 
+    pub_string = this->create_publisher<std_msgs::msg::String>("light_cog", 10);
+    pub_image = this->create_publisher<sensor_msgs::msg::Image>("image_thres", 10);
   }
 
 private:
@@ -36,43 +37,76 @@ private:
     int threshold = this->get_parameter("threshold").as_int();
     RCLCPP_INFO(this->get_logger(), "using threshold: %d", threshold);
 
-    // Check the brightness of the image
-    int sum = 0;
-    int max = 0;
-    int min = 255;
-    String content = "";
-    for (size_t i = 0; i < msg->data.size(); i++)
+    // convert image from bgr8 to thresholded image
+    auto img_gray = sensor_msgs::msg::Image();
+    img_gray.height = msg->height;
+    img_gray.width = msg->width;
+    img_gray.encoding = "mono8";
+    img_gray.data = std::vector<uint8_t>(msg->height * msg->width);
+    
+    for (unsigned int i = 0; i < msg->height; i++)
     {
-      sum += msg->data[i];
-      max = std::max(max, msg->data[i]);
-      min = std::min(min, msg->data[i]);
-      content += std::to_string(msg->data[i]) + " ";
-    }
-    double avg = (double)sum / msg->data.size();
+      for (unsigned int j = 0; j < msg->width; j++)
+      {
+        int index = i * msg->width + j;
+        int b = msg->data[index * 3];
+        int g = msg->data[index * 3 + 1];
+        int r = msg->data[index * 3 + 2];
+        int gray = (r + g + b) / 3;
 
-    RCLCPP_INFO(this->get_logger(), content.c_str());
+        if (gray > threshold) {
+          // msg->data[index] = 255;
+          // msg->data[index + 1] = 255;
+          // msg->data[index + 2] = 255;
+          img_gray.data[index] = 255;
+        }
+        else {
+          // msg->data[index] = 0;
+          // msg->data[index + 1] = 0;
+          // msg->data[index + 2] = 0;
+          img_gray.data[index] = 0;
+        }
+      }
+    }
+
+    // publish the thresholded image
+    pub_image->publish(img_gray);
+
+    // find the center of gravity of the image
+    int avg_x = 0;
+    int avg_y = 0;
+    int count = 0;
+    for (unsigned int i = 0; i < msg->height; i++)
+    {
+      for (unsigned int j = 0; j < msg->width; j++)
+      {
+        int index = (i * msg->width + j);
+        int pixel = img_gray.data[index];
+
+        if ( pixel == 255) {
+          avg_x += i;
+          avg_y += j;
+          count += 1;
+        }
+      }
+    }
+    if (count == 0) {
+      count = 1;
+    }
+    avg_x /= count;
+    avg_y /= count;
 
     // construct message
     auto message = std_msgs::msg::String();
-    if (avg > threshold)
-    {
-      message.data = "It is light";
-    }
-    else
-    {
-      message.data = "It is dark";
-    }
-
-    message.data += " (avg: " + std::to_string(avg) + ")";
-
-    // publish message
+    message.data = "x: " + std::to_string(avg_x) + " y: " + std::to_string(avg_y);
     RCLCPP_INFO(this->get_logger(), "Publishing: '%s'", message.data.c_str());
-    publisher_->publish(message);
+    pub_string->publish(message);
   }
 
   // define attributes
   rclcpp::Subscription<sensor_msgs::msg::Image>::SharedPtr subscription_;
-  rclcpp::Publisher<std_msgs::msg::String>::SharedPtr publisher_;
+  rclcpp::Publisher<std_msgs::msg::String>::SharedPtr pub_string;
+  rclcpp::Publisher<sensor_msgs::msg::Image>::SharedPtr pub_image;
 };
 
 
