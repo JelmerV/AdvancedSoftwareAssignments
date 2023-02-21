@@ -11,6 +11,7 @@ find_package(ament_cmake REQUIRED)
 find_package(rclcpp REQUIRED)
 find_package(std_msgs REQUIRED)
 find_package(sensor_msgs REQUIRED)
+find_package(asdfr_interfaces REQUIRED)
 
 # make executables
 add_executable(light_check src/light_check.cpp)
@@ -19,10 +20,14 @@ ament_target_dependencies(light_check rclcpp std_msgs sensor_msgs)
 add_executable(light_position src/light_position.cpp)
 ament_target_dependencies(light_position rclcpp std_msgs sensor_msgs)
 
+add_executable(jiwy_trajectory src/jiwy_traject.cpp)
+ament_target_dependencies(jiwy_trajectory rclcpp std_msgs sensor_msgs asdfr_interfaces)
+
 # add executables
 install(TARGETS
   light_check
   light_position
+  jiwy_trajectory
   DESTINATION lib/${PROJECT_NAME}
 )
 
