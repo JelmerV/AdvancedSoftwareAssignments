@@ -23,11 +23,14 @@ class JiwyTrajectory : public rclcpp::Node
   // define attributes
   rclcpp::Subscription<sensor_msgs::msg::Image>::SharedPtr subscription_;
   rclcpp::Publisher<std_msgs::msg::String>::SharedPtr pub_string;
+  rclcpp::Publisher<sensor_msgs::msg::Image>::SharedPtr pub_image;
 
 public:
   JiwyTrajectory() : Node("jiwy_trajectory")
   {
     this->declare_parameter("threshold", 100);
+    this->declare_parameter<double>("x_limit_rad", 0.8);
+    this->declare_parameter<double>("y_limit_rad", 0.6);
     RCLCPP_INFO(this->get_logger(), "hello");
 
     pub_setpoint = this->create_publisher<asdfr_interfaces::msg::Point2>("setpoint", 10);
@@ -39,6 +42,7 @@ public:
         10,                                                 // queue size
         std::bind(&JiwyTrajectory::topic_callback, this, _1) // callback function
     );
+    pub_image = this->create_publisher<sensor_msgs::msg::Image>("image_thres", 10);
   }
 
 private:
@@ -84,35 +88,47 @@ private:
         }
       }
     }
+    // publish the thresholded image
+    pub_image->publish(img_gray);
 
     // find the center of gravity of the image
-    int avg_x = 0;
-    int avg_y = 0;
-    int count = 0;
-    for (unsigned int i = 0; i < msg->height; i++)
+    float avg_col = 0;
+    float avg_row = 0;
+    float count = 0;
+    for (unsigned int i = 0; i < img_gray.height; i++)
     {
-      for (unsigned int j = 0; j < msg->width; j++)
+      for (unsigned int j = 0; j < img_gray.width; j++)
       {
-        int index = (i * msg->width + j);
+        int index = (i * img_gray.width + j);
         int pixel = img_gray.data[index];
 
         if ( pixel == 255) {
-          avg_x += i;
-          avg_y += j;
+          avg_col += j;
+          avg_row += i;
           count += 1;
         }
       }
     }
-    if (count == 0) {
-      count = 1;
+    if (count == 0) {  //prevent division by 0
+      avg_col = img_gray.width / 2;
+      avg_row = img_gray.height / 2;
+    } else {
+      avg_col /= count;
+      avg_row /= count;
     }
-    avg_x /= (float)count;
-    avg_y /= (float)count;
+
+    //convert pixel value to pan/tilt values
+    avg_col = avg_col - img_gray.width / 2;
+    avg_row = avg_row - img_gray.height / 2;
+
+    float x_lim = get_parameter("x_limit_rad").as_double();
+    float y_lim = get_parameter("x_limit_rad").as_double();
 
     // construct message
     auto message = asdfr_interfaces::msg::Point2();
-    message.x = avg_x;
-    message.y = avg_y;
+    message.x = avg_col * x_lim / (float)(img_gray.width / 2);
+    message.y = -avg_row * y_lim / (float)(img_gray.height / 2);
+
     RCLCPP_INFO(this->get_logger(), "publishing setpoint: (%f, %f)", message.x, message.y);
     pub_setpoint->publish(message);
   }

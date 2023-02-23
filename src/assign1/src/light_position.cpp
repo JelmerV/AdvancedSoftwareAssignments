@@ -76,29 +76,31 @@ private:
     int avg_x = 0;
     int avg_y = 0;
     int count = 0;
-    for (unsigned int i = 0; i < msg->height; i++)
+    for (unsigned int i = 0; i < img_gray.height; i++)
     {
-      for (unsigned int j = 0; j < msg->width; j++)
+      for (unsigned int j = 0; j < img_gray.width; j++)
       {
-        int index = (i * msg->width + j);
+        int index = (i * img_gray.width + j);
         int pixel = img_gray.data[index];
 
         if ( pixel == 255) {
-          avg_x += i;
-          avg_y += j;
+          avg_x += j;
+          avg_y += i;
           count += 1;
         }
       }
     }
-    if (count == 0) {
-      count = 1;
+    if (count == 0) {  //prevent devision by 0
+      avg_x = img_gray.width / 2;
+      avg_y = img_gray.width / 2;
+    } else {
+      avg_x /= count;
+      avg_y /= count;
     }
-    avg_x /= count;
-    avg_y /= count;
 
     // construct message
     auto message = std_msgs::msg::String();
-    message.data = "x: " + std::to_string(avg_x) + " y: " + std::to_string(avg_y);
+    message.data = "x:" + std::to_string(avg_x) + ", y: " + std::to_string(avg_y);
     RCLCPP_INFO(this->get_logger(), "Publishing: '%s'", message.data.c_str());
     pub_string->publish(message);
   }
