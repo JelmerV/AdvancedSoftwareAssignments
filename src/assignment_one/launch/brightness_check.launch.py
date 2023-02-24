@@ -2,11 +2,17 @@ from launch import LaunchDescription
 from launch_ros.actions import Node
 
 def generate_launch_description():
-    # Add the brightness_check Node.
-    node_brightness = Node(
-        namespace = 'assignment_one', 
-        package = 'assignment_one', 
-        executable = 'brightness_check',
-    )
+    nodes = [
+        # Add the brightness_check Node.
+        Node(
+            package = 'assignment_one', 
+            executable = 'brightness_check',
+        ),
+        # Add the cam2image Node.
+        Node(
+            package = 'image_tools', 
+            executable = 'cam2image',
+        ),
+    ]
 
-    return LaunchDescription([node_brightness])
+    return LaunchDescription(nodes)
