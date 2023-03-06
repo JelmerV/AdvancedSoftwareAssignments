@@ -1,4 +1,13 @@
+// C++ includes.
+#include <vector>
+
+// ROS2 Message includes.
+#include "rcl_interfaces/msg/parameter_descriptor.hpp"
+#include "rcl_interfaces/msg/integer_range.hpp"
+
+// ROS2 internal includes.
 #include "assignment_one/light_position.hpp"
+#include "assignment_one/constants.hpp"
 
 LightPosition::LightPosition(const rclcpp::NodeOptions & options) : Node("light_position", options) {
     // Parse parameters.
@@ -13,30 +22,47 @@ LightPosition::LightPosition(const rclcpp::NodeOptions & options) : Node("light_
 }
 
 void LightPosition::parse_parameters() {
-    // Declare parameter.
+    // Set 'threshold' parameter description.
     rcl_interfaces::msg::ParameterDescriptor threshold_desc;
-    threshold_desc.description = "Determines treshold for light/dark (value between 0-255)";
-    threshold_ = this->declare_parameter("threshold", 100, threshold_desc);
-    RCLCPP_INFO(this->get_logger(), "using threshold: %d", threshold_);
+    threshold_desc.description = "Determines treshold for what is considered light and dark.";
+    
+    // Set allowed integer range for 'threshold' parameter.
+    rcl_interfaces::msg::IntegerRange threshold_range;
+    threshold_range.from_value = assignment_one::THRESHOLD_MIN;
+    threshold_range.step = assignment_one::THRESHOLD_STEP;
+    threshold_range.to_value = assignment_one::THRESHOLD_MAX;
+    threshold_desc.integer_range = {threshold_range};
+
+    // Declare 'threshold' parameter.
+    threshold_ = this->declare_parameter("threshold", assignment_one::THRESHOLD_DEFAULT, threshold_desc);
+    RCLCPP_INFO(this->get_logger(), "Using threshold: %d", threshold_);
 }
 
-void LightPosition::image_callback(const image_::SharedPtr img) const {
+void LightPosition::image_callback(const image_::SharedPtr img) {
     // Initialise variables needed during execution.
     int cog_x = 0;
     int cog_y = 0;
     int count = 0;
 
+    // Update the threshold value.
+    threshold_ = this->get_parameter("threshold").as_int();
+
     // Initialise new Image message for mono image.
     image_ img_mono;
     img_mono.height = img->height;
     img_mono.width = img->width;
+    img_mono.step = img->width;
+    img_mono.header.frame_id = img->header.frame_id;
+    img_mono.header.stamp = this->now();
     img_mono.encoding = "mono8";
     img_mono.data = std::vector<uint8_t>(img->height * img->width);
 
     // Process image to get centor of gravity and mono image.
-    for (uint i = 0; i < img->height; i++) {
-        for (uint j = 0; j < img->width; j++) {
+    for (unsigned int i = 0; i < img->height; i++) {
+        for (unsigned int j = 0; j < img->width; j++) {
             int index = i * img->width + j;
+
+            // Calculate grayscale value.
             int gray = (img->data[index * 3] + img->data[index * 3 + 1] + img->data[index * 3 + 2]) / 3;
 
             // Make pixel black unless threshold is met.

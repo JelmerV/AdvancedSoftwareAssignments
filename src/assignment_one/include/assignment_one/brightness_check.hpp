@@ -1,10 +1,12 @@
-#include <chrono>
+// C++ includes.
 #include <functional>
 #include <memory>
-#include <string>
 
+// ROS2 includes.
 #include "rclcpp/rclcpp.hpp"
 #include "rclcpp_components/register_node_macro.hpp"
+
+// ROS2 Message includes.
 #include "std_msgs/msg/string.hpp"
 #include "sensor_msgs/msg/image.hpp"
 
@@ -22,7 +24,7 @@ class BrightnessCheck : public rclcpp::Node {
 
         void parse_parameters();
 
-        void image_callback(const image_::SharedPtr img) const;
+        void image_callback(const image_::SharedPtr img);
 
         int threshold_;
 

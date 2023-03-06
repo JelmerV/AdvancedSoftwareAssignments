@@ -1,9 +1,12 @@
-#include <chrono>
+// C++ includes.
 #include <functional>
-#include <vector>
+#include <memory>
 
+// ROS2 includes.
 #include "rclcpp/rclcpp.hpp"
 #include "rclcpp_components/register_node_macro.hpp"
+
+// ROS2 Message includes.
 #include "sensor_msgs/msg/image.hpp"
 #include "asdfr_interfaces/msg/point2.hpp"
 
@@ -21,7 +24,7 @@ class LightPosition : public rclcpp::Node {
 
         void parse_parameters();
 
-        void image_callback(const image_::SharedPtr img) const;
+        void image_callback(const image_::SharedPtr img);
 
         int threshold_;
 

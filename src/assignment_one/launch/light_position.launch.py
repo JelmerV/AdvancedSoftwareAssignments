@@ -3,14 +3,6 @@ from launch_ros.actions import Node
 
 def generate_launch_description():
     nodes = [
-        # Add the brightness_check Node.
-        Node(
-            package = 'assignment_one', 
-            executable = 'brightness_check',
-            parameters = [
-                {"threshold": 120},
-            ],
-        ),
         # Add the cam2image Node.
         Node(
             package = 'image_tools', 
@@ -20,10 +12,21 @@ def generate_launch_description():
                 {"history": "keep_last"},
             ],
         ),
+        # Add the light_position Node.
+        Node(
+            package = 'assignment_one', 
+            executable = 'light_position',
+            parameters = [
+                {"threshold": 200},
+            ],
+        ),
         # Add the showimage Node.
         Node(
             package = 'image_tools',
             executable = 'showimage',
+            remappings=[
+                ('image', 'mono_image'),
+            ],
         ),
     ]
 
