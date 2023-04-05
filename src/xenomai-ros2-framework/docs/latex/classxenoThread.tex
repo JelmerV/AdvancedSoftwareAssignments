@@ -1,0 +1,160 @@
+\hypertarget{classxenoThread}{}\doxysection{xeno\+Thread Class Reference}
+\label{classxenoThread}\index{xenoThread@{xenoThread}}
+
+
+Thread creation class.  
+
+
+
+
+{\ttfamily \#include $<$super\+Thread.\+h$>$}
+
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classxenoThread_a55f426c0d8ca9733336391c14fd0a64b}\label{classxenoThread_a55f426c0d8ca9733336391c14fd0a64b}} 
+{\bfseries xeno\+Thread} (\mbox{\hyperlink{classrunnable}{runnable}} $\ast$\+\_\+run\+Class)
+\item 
+void \mbox{\hyperlink{classxenoThread_a19f2b2a712e280398f2e9b1c7415e20a}{init}} (int \+\_\+ns\+\_\+period, int \+\_\+priority, int \+\_\+affinity)
+\begin{DoxyCompactList}\small\item\em initalization function to set the timer, priority and core affinity \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classxenoThread_ac54ddeefcd5976658747c2857673168c}{init}} (int \+\_\+ns\+\_\+period, int \+\_\+priority)
+\begin{DoxyCompactList}\small\item\em initalization function to set the timer and priority. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classxenoThread_a0c026fd9f6aef87c9449fdad4297f58b}{enable\+Logging}} (bool \+\_\+timing\+Log, int \+\_\+logging\+Port)
+\begin{DoxyCompactList}\small\item\em enables timing logging to an X\+D\+DP port \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{classxenoThread_ad6a165de022d5921b350cfc0ac4f0b65}{start}} (const char $\ast$name)
+\begin{DoxyCompactList}\small\item\em Start the \mbox{\hyperlink{classxenoThread}{xeno\+Thread}} thread function. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{classxenoThread_a249d18068c2d5b0646a40331cc81e325}{set\+Affinity}} ()
+\begin{DoxyCompactList}\small\item\em (T\+O\+DO) Set the Affinity of the thread. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classxenoThread_ae7e04a34f86df402563ecc248675e331}{enable\+G\+P\+IO}} (int pin)
+\begin{DoxyCompactList}\small\item\em enables G\+P\+IO timing logging of the task. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classxenoThread_a9d78c488d34e15f5e0f3eaae7126f513}{stop\+Thread}} ()
+\begin{DoxyCompactList}\small\item\em Stop the running thread. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Thread creation class. 
+
+Class that creates and runs task on a specified timer. Is able to log timing and toggle G\+P\+IO for timing analysis. 
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{classxenoThread_ae7e04a34f86df402563ecc248675e331}\label{classxenoThread_ae7e04a34f86df402563ecc248675e331}} 
+\index{xenoThread@{xenoThread}!enableGPIO@{enableGPIO}}
+\index{enableGPIO@{enableGPIO}!xenoThread@{xenoThread}}
+\doxysubsubsection{\texorpdfstring{enableGPIO()}{enableGPIO()}}
+{\footnotesize\ttfamily void xeno\+Thread\+::enable\+G\+P\+IO (\begin{DoxyParamCaption}\item[{int}]{pin }\end{DoxyParamCaption})}
+
+
+
+enables G\+P\+IO timing logging of the task. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em pin} & Pin which is toggled every period. \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classxenoThread_a0c026fd9f6aef87c9449fdad4297f58b}\label{classxenoThread_a0c026fd9f6aef87c9449fdad4297f58b}} 
+\index{xenoThread@{xenoThread}!enableLogging@{enableLogging}}
+\index{enableLogging@{enableLogging}!xenoThread@{xenoThread}}
+\doxysubsubsection{\texorpdfstring{enableLogging()}{enableLogging()}}
+{\footnotesize\ttfamily void xeno\+Thread\+::enable\+Logging (\begin{DoxyParamCaption}\item[{bool}]{\+\_\+timing\+Log,  }\item[{int}]{\+\_\+logging\+Port }\end{DoxyParamCaption})}
+
+
+
+enables timing logging to an X\+D\+DP port 
+
+
+\begin{DoxyParams}{Parameters}
+{\em \+\_\+timing\+Log} & enable or disable timing logging \\
+\hline
+{\em \+\_\+logging\+Port} & logging port for the X\+D\+DP comm \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classxenoThread_ac54ddeefcd5976658747c2857673168c}\label{classxenoThread_ac54ddeefcd5976658747c2857673168c}} 
+\index{xenoThread@{xenoThread}!init@{init}}
+\index{init@{init}!xenoThread@{xenoThread}}
+\doxysubsubsection{\texorpdfstring{init()}{init()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily void xeno\+Thread\+::init (\begin{DoxyParamCaption}\item[{int}]{\+\_\+ns\+\_\+period,  }\item[{int}]{\+\_\+priority }\end{DoxyParamCaption})}
+
+
+
+initalization function to set the timer and priority. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em \+\_\+ns\+\_\+period} & task period in ns \\
+\hline
+{\em \+\_\+priority} & task scheduling priority \\
+\hline
+\end{DoxyParams}
+\begin{DoxySeeAlso}{See also}
+void \mbox{\hyperlink{classxenoThread_a19f2b2a712e280398f2e9b1c7415e20a}{init(int \+\_\+ns\+\_\+period, int \+\_\+priority, int \+\_\+affinity)}}; 
+\end{DoxySeeAlso}
+\mbox{\Hypertarget{classxenoThread_a19f2b2a712e280398f2e9b1c7415e20a}\label{classxenoThread_a19f2b2a712e280398f2e9b1c7415e20a}} 
+\index{xenoThread@{xenoThread}!init@{init}}
+\index{init@{init}!xenoThread@{xenoThread}}
+\doxysubsubsection{\texorpdfstring{init()}{init()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily void xeno\+Thread\+::init (\begin{DoxyParamCaption}\item[{int}]{\+\_\+ns\+\_\+period,  }\item[{int}]{\+\_\+priority,  }\item[{int}]{\+\_\+affinity }\end{DoxyParamCaption})}
+
+
+
+initalization function to set the timer, priority and core affinity 
+
+
+\begin{DoxyParams}{Parameters}
+{\em \+\_\+ns\+\_\+period} & task period in ns \\
+\hline
+{\em \+\_\+priority} & task scheduling priority \\
+\hline
+{\em \+\_\+affinity} & task affinity \\
+\hline
+\end{DoxyParams}
+\begin{DoxySeeAlso}{See also}
+\mbox{\hyperlink{classxenoThread_ac54ddeefcd5976658747c2857673168c}{init(int \+\_\+ns\+\_\+period, int \+\_\+priority)}}; 
+\end{DoxySeeAlso}
+\mbox{\Hypertarget{classxenoThread_a249d18068c2d5b0646a40331cc81e325}\label{classxenoThread_a249d18068c2d5b0646a40331cc81e325}} 
+\index{xenoThread@{xenoThread}!setAffinity@{setAffinity}}
+\index{setAffinity@{setAffinity}!xenoThread@{xenoThread}}
+\doxysubsubsection{\texorpdfstring{setAffinity()}{setAffinity()}}
+{\footnotesize\ttfamily int xeno\+Thread\+::set\+Affinity (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+(T\+O\+DO) Set the Affinity of the thread. 
+
+\begin{DoxyReturn}{Returns}
+int\+: returns the core on which the thread is set. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classxenoThread_ad6a165de022d5921b350cfc0ac4f0b65}\label{classxenoThread_ad6a165de022d5921b350cfc0ac4f0b65}} 
+\index{xenoThread@{xenoThread}!start@{start}}
+\index{start@{start}!xenoThread@{xenoThread}}
+\doxysubsubsection{\texorpdfstring{start()}{start()}}
+{\footnotesize\ttfamily int xeno\+Thread\+::start (\begin{DoxyParamCaption}\item[{const char $\ast$}]{name }\end{DoxyParamCaption})}
+
+
+
+Start the \mbox{\hyperlink{classxenoThread}{xeno\+Thread}} thread function. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em name} & Name of the thread visible in xenomai thread stat. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+int\+: 1 if correctly started. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classxenoThread_a9d78c488d34e15f5e0f3eaae7126f513}\label{classxenoThread_a9d78c488d34e15f5e0f3eaae7126f513}} 
+\index{xenoThread@{xenoThread}!stopThread@{stopThread}}
+\index{stopThread@{stopThread}!xenoThread@{xenoThread}}
+\doxysubsubsection{\texorpdfstring{stopThread()}{stopThread()}}
+{\footnotesize\ttfamily void xeno\+Thread\+::stop\+Thread (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Stop the running thread. 
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+framework/super\+Thread.\+h\item 
+framework/super\+Thread.\+cpp\end{DoxyCompactItemize}

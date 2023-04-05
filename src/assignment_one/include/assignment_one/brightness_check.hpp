@@ -4,7 +4,7 @@
 
 // ROS2 includes.
 #include "rclcpp/rclcpp.hpp"
-#include "rclcpp_components/register_node_macro.hpp"
+// #include "rclcpp_components/register_node_macro.hpp"
 
 // ROS2 Message includes.
 #include "std_msgs/msg/string.hpp"
@@ -17,7 +17,8 @@ using std::placeholders::_1;
 
 class BrightnessCheck : public rclcpp::Node {
     public:
-        BrightnessCheck(const rclcpp::NodeOptions & options);
+        //BrightnessCheck(const rclcpp::NodeOptions & options);
+        BrightnessCheck();
     private:
         using image_  = sensor_msgs::msg::Image;
         using string_ = std_msgs::msg::String;

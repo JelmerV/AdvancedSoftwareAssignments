@@ -9,7 +9,8 @@
 #include "assignment_one/brightness_check.hpp"
 #include "assignment_one/constants.hpp"
 
-BrightnessCheck::BrightnessCheck(const rclcpp::NodeOptions & options) : Node("brightness_check", options) {
+// BrightnessCheck::BrightnessCheck(const rclcpp::NodeOptions & options) : Node("brightness_check", options) {
+BrightnessCheck::BrightnessCheck() : Node("brightness_check") {
     // Parse parameters.
     parse_parameters();
 
@@ -70,4 +71,12 @@ void BrightnessCheck::image_callback(const image_::SharedPtr img) {
     pub_brightness_->publish(pub_msg);
 }
 
-RCLCPP_COMPONENTS_REGISTER_NODE(BrightnessCheck)
+// RCLCPP_COMPONENTS_REGISTER_NODE(BrightnessCheck)
+
+int main(int argc, char * argv[])
+{
+  rclcpp::init(argc, argv);
+  rclcpp::spin(std::make_shared<BrightnessCheck>());
+  rclcpp::shutdown();
+  return 0;
+}

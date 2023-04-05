@@ -1,0 +1,218 @@
+\hypertarget{classxenoCommunication}{}\doxysection{xeno\+Communication Class Reference}
+\label{classxenoCommunication}\index{xenoCommunication@{xenoCommunication}}
+
+
+Xenomai ased communication class.  
+
+
+
+
+{\ttfamily \#include $<$communication\+Class.\+h$>$}
+
+Inheritance diagram for xeno\+Communication\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{classxenoCommunication}
+\end{center}
+\end{figure}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+int \mbox{\hyperlink{classxenoCommunication_a8a51629b904be642a5524927b11bc4da}{send\+Double}} (double to\+Send)
+\begin{DoxyCompactList}\small\item\em Xenomai I\+PC based send function. Send the supplied double to the port set by the initializer of the class, best used within X\+D\+DP. Function is set to M\+S\+G\+\_\+\+D\+O\+N\+T\+W\+A\+IT, therefore if no room in X\+D\+D\+P/\+I\+D\+DP buffer, send will be skipped. \end{DoxyCompactList}\item 
+virtual int \mbox{\hyperlink{classxenoCommunication_a8c5cbf07ccd57a7f54d5242da5c48d86}{send\+Double\+Array}} (double to\+Send\mbox{[}$\,$\mbox{]}, int port, int size)
+\begin{DoxyCompactList}\small\item\em Xenomai I\+PC based send function for arrays. Send array to the supplied port. Function is set to M\+S\+G\+\_\+\+D\+O\+N\+T\+W\+A\+IT, therefore if no room in X\+D\+D\+P/\+I\+D\+DP buffer, send will be skipped. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classxenoCommunication_a27dfa793dec805b93e09315c8eb5e73b}{set\+Verbose}} (bool \+\_\+verbose)
+\begin{DoxyCompactList}\small\item\em Set the class to be silent or explicit. \end{DoxyCompactList}\item 
+virtual int \mbox{\hyperlink{classxenoCommunication_ade6ec53717631bbfc288ddc2e8e606b4}{receive\+Double\+Array}} (double $\ast$received, int size)
+\begin{DoxyCompactList}\small\item\em receive an array from the pre-\/specified port. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{classxenoCommunication_aa26fd9e0a1b63900b3ff583566cc4195}{receive\+Recent\+Double}} (double $\ast$received)
+\begin{DoxyCompactList}\small\item\em receive the most recently sent double in the X\+D\+D\+P/\+I\+D\+DP buffer. (entire buffer is emptied) \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{classxenoCommunication_a913bc1a1c888de1ed5d1687d0c2c858e}{receive\+Single\+Double}} (double $\ast$received)
+\begin{DoxyCompactList}\small\item\em receive the oldest sent double in the X\+D\+D\+P/\+I\+D\+DP buffer. (only last value is removed) \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{classxenoCommunication_a8d08c247a7163aa71d01032c8a879203}{receive\+Single\+Double\+\_\+\+W\+A\+IT}} (double $\ast$received)
+\begin{DoxyCompactList}\small\item\em receive the oldest sent double in the X\+D\+D\+P/\+I\+D\+DP buffer. (only last value is removed) \end{DoxyCompactList}\item 
+virtual void \mbox{\hyperlink{classxenoCommunication_a45c882637172e985e4193087b893f440}{init\+Socket}} ()=0
+\begin{DoxyCompactList}\small\item\em Virtual function that is overwritten with individual X\+D\+D\+P/\+I\+D\+DP initial socket functionality. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Protected Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classxenoCommunication_a7043fcde674b7c4f120f65e03ce3c444}\label{classxenoCommunication_a7043fcde674b7c4f120f65e03ce3c444}} 
+int {\bfseries receive\+Port}
+\item 
+\mbox{\Hypertarget{classxenoCommunication_af03c742d64b75e47956e4f822078a3d9}\label{classxenoCommunication_af03c742d64b75e47956e4f822078a3d9}} 
+const char $\ast$ {\bfseries protocol}
+\item 
+\mbox{\Hypertarget{classxenoCommunication_a33da4950be5fb3d124de194964329a59}\label{classxenoCommunication_a33da4950be5fb3d124de194964329a59}} 
+bool {\bfseries verbose} = false
+\item 
+\mbox{\Hypertarget{classxenoCommunication_a1f4e485857c5b51c12ce36f4f64db48a}\label{classxenoCommunication_a1f4e485857c5b51c12ce36f4f64db48a}} 
+int {\bfseries s}
+\item 
+\mbox{\Hypertarget{classxenoCommunication_a677d3a0b7d6a18ae9e720d9a9be8f462}\label{classxenoCommunication_a677d3a0b7d6a18ae9e720d9a9be8f462}} 
+struct sockaddr\+\_\+ipc {\bfseries addr}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Xenomai ased communication class. 
+
+Upper communication class describing the receiving and sending functions applicable to both I\+D\+DP and X\+D\+DP. 
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{classxenoCommunication_a45c882637172e985e4193087b893f440}\label{classxenoCommunication_a45c882637172e985e4193087b893f440}} 
+\index{xenoCommunication@{xenoCommunication}!initSocket@{initSocket}}
+\index{initSocket@{initSocket}!xenoCommunication@{xenoCommunication}}
+\doxysubsubsection{\texorpdfstring{initSocket()}{initSocket()}}
+{\footnotesize\ttfamily virtual void xeno\+Communication\+::init\+Socket (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [pure virtual]}}
+
+
+
+Virtual function that is overwritten with individual X\+D\+D\+P/\+I\+D\+DP initial socket functionality. 
+
+\mbox{\Hypertarget{classxenoCommunication_ade6ec53717631bbfc288ddc2e8e606b4}\label{classxenoCommunication_ade6ec53717631bbfc288ddc2e8e606b4}} 
+\index{xenoCommunication@{xenoCommunication}!receiveDoubleArray@{receiveDoubleArray}}
+\index{receiveDoubleArray@{receiveDoubleArray}!xenoCommunication@{xenoCommunication}}
+\doxysubsubsection{\texorpdfstring{receiveDoubleArray()}{receiveDoubleArray()}}
+{\footnotesize\ttfamily int xeno\+Communication\+::receive\+Double\+Array (\begin{DoxyParamCaption}\item[{double $\ast$}]{received,  }\item[{int}]{size }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+receive an array from the pre-\/specified port. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em received} & pointer on which the received value will be written. \\
+\hline
+{\em size} & size of the to-\/be-\/received value. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+int\+: size of the received value. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classxenoCommunication_aa26fd9e0a1b63900b3ff583566cc4195}\label{classxenoCommunication_aa26fd9e0a1b63900b3ff583566cc4195}} 
+\index{xenoCommunication@{xenoCommunication}!receiveRecentDouble@{receiveRecentDouble}}
+\index{receiveRecentDouble@{receiveRecentDouble}!xenoCommunication@{xenoCommunication}}
+\doxysubsubsection{\texorpdfstring{receiveRecentDouble()}{receiveRecentDouble()}}
+{\footnotesize\ttfamily int xeno\+Communication\+::receive\+Recent\+Double (\begin{DoxyParamCaption}\item[{double $\ast$}]{received }\end{DoxyParamCaption})}
+
+
+
+receive the most recently sent double in the X\+D\+D\+P/\+I\+D\+DP buffer. (entire buffer is emptied) 
+
+
+\begin{DoxyParams}{Parameters}
+{\em received} & pointer on which the received value will be written. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+int\+: size of the received value. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classxenoCommunication_a913bc1a1c888de1ed5d1687d0c2c858e}\label{classxenoCommunication_a913bc1a1c888de1ed5d1687d0c2c858e}} 
+\index{xenoCommunication@{xenoCommunication}!receiveSingleDouble@{receiveSingleDouble}}
+\index{receiveSingleDouble@{receiveSingleDouble}!xenoCommunication@{xenoCommunication}}
+\doxysubsubsection{\texorpdfstring{receiveSingleDouble()}{receiveSingleDouble()}}
+{\footnotesize\ttfamily int xeno\+Communication\+::receive\+Single\+Double (\begin{DoxyParamCaption}\item[{double $\ast$}]{received }\end{DoxyParamCaption})}
+
+
+
+receive the oldest sent double in the X\+D\+D\+P/\+I\+D\+DP buffer. (only last value is removed) 
+
+
+\begin{DoxyParams}{Parameters}
+{\em received} & pointer on which the received value will be written. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+int\+: size of the received value. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classxenoCommunication_a8d08c247a7163aa71d01032c8a879203}\label{classxenoCommunication_a8d08c247a7163aa71d01032c8a879203}} 
+\index{xenoCommunication@{xenoCommunication}!receiveSingleDouble\_WAIT@{receiveSingleDouble\_WAIT}}
+\index{receiveSingleDouble\_WAIT@{receiveSingleDouble\_WAIT}!xenoCommunication@{xenoCommunication}}
+\doxysubsubsection{\texorpdfstring{receiveSingleDouble\_WAIT()}{receiveSingleDouble\_WAIT()}}
+{\footnotesize\ttfamily int xeno\+Communication\+::receive\+Single\+Double\+\_\+\+W\+A\+IT (\begin{DoxyParamCaption}\item[{double $\ast$}]{received }\end{DoxyParamCaption})}
+
+
+
+receive the oldest sent double in the X\+D\+D\+P/\+I\+D\+DP buffer. (only last value is removed) 
+
+
+\begin{DoxyParams}{Parameters}
+{\em received} & pointer on which the received value will be written. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+int\+: size of the received value. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classxenoCommunication_a8a51629b904be642a5524927b11bc4da}\label{classxenoCommunication_a8a51629b904be642a5524927b11bc4da}} 
+\index{xenoCommunication@{xenoCommunication}!sendDouble@{sendDouble}}
+\index{sendDouble@{sendDouble}!xenoCommunication@{xenoCommunication}}
+\doxysubsubsection{\texorpdfstring{sendDouble()}{sendDouble()}}
+{\footnotesize\ttfamily int xeno\+Communication\+::send\+Double (\begin{DoxyParamCaption}\item[{double}]{to\+Send }\end{DoxyParamCaption})}
+
+
+
+Xenomai I\+PC based send function. Send the supplied double to the port set by the initializer of the class, best used within X\+D\+DP. Function is set to M\+S\+G\+\_\+\+D\+O\+N\+T\+W\+A\+IT, therefore if no room in X\+D\+D\+P/\+I\+D\+DP buffer, send will be skipped. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em to\+Send} & double value which needs to be sent. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+return value of the send function, -\/1 if failed. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classxenoCommunication_a8c5cbf07ccd57a7f54d5242da5c48d86}\label{classxenoCommunication_a8c5cbf07ccd57a7f54d5242da5c48d86}} 
+\index{xenoCommunication@{xenoCommunication}!sendDoubleArray@{sendDoubleArray}}
+\index{sendDoubleArray@{sendDoubleArray}!xenoCommunication@{xenoCommunication}}
+\doxysubsubsection{\texorpdfstring{sendDoubleArray()}{sendDoubleArray()}}
+{\footnotesize\ttfamily int xeno\+Communication\+::send\+Double\+Array (\begin{DoxyParamCaption}\item[{double}]{to\+Send\mbox{[}$\,$\mbox{]},  }\item[{int}]{port,  }\item[{int}]{size }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Xenomai I\+PC based send function for arrays. Send array to the supplied port. Function is set to M\+S\+G\+\_\+\+D\+O\+N\+T\+W\+A\+IT, therefore if no room in X\+D\+D\+P/\+I\+D\+DP buffer, send will be skipped. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em to\+Send} & double array value which needs to be sent. \\
+\hline
+{\em size} & size of the double array. \\
+\hline
+{\em port} & X\+D\+D\+P/\+I\+D\+DP destination port \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+return value of the send function, -\/1 if failed. 
+\end{DoxyReturn}
+\begin{DoxySeeAlso}{See also}
+\mbox{\hyperlink{classxenoCommunication_a8a51629b904be642a5524927b11bc4da}{send\+Double(double to\+Send)}} 
+
+send\+Double(double to\+Send, int port, bool verbose) 
+
+send\+Double(double to\+Send, bool verbose) 
+\end{DoxySeeAlso}
+
+
+Reimplemented in \mbox{\hyperlink{classIcoConnection_af1f18f6eb838074ff7a1cee8f889b7b1}{Ico\+Connection}}.
+
+\mbox{\Hypertarget{classxenoCommunication_a27dfa793dec805b93e09315c8eb5e73b}\label{classxenoCommunication_a27dfa793dec805b93e09315c8eb5e73b}} 
+\index{xenoCommunication@{xenoCommunication}!setVerbose@{setVerbose}}
+\index{setVerbose@{setVerbose}!xenoCommunication@{xenoCommunication}}
+\doxysubsubsection{\texorpdfstring{setVerbose()}{setVerbose()}}
+{\footnotesize\ttfamily void xeno\+Communication\+::set\+Verbose (\begin{DoxyParamCaption}\item[{bool}]{\+\_\+verbose }\end{DoxyParamCaption})}
+
+
+
+Set the class to be silent or explicit. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em \+\_\+verbose} & boolean which indicates verbosity. \\
+\hline
+\end{DoxyParams}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+framework/communication\+Class.\+h\item 
+framework/communication\+Class.\+cpp\end{DoxyCompactItemize}

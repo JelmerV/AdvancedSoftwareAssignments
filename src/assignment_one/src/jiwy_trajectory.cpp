@@ -10,7 +10,8 @@
 #include "assignment_one/jiwy_trajectory.hpp"
 #include "assignment_one/constants.hpp"
 
-JiwyTrajectory::JiwyTrajectory(const rclcpp::NodeOptions & options) : Node("jiwy_trajectory", options) {
+// JiwyTrajectory::JiwyTrajectory(const rclcpp::NodeOptions & options) : Node("jiwy_trajectory", options) {
+JiwyTrajectory::JiwyTrajectory() : Node("jiwy_trajectory") {
     // Parse parameters.
     parse_parameters();
 
@@ -117,4 +118,12 @@ void JiwyTrajectory::image_cog_callback(const point2_::SharedPtr img_cog) {
     pub_setpoint_->publish(pub_msg);
 }
 
-RCLCPP_COMPONENTS_REGISTER_NODE(JiwyTrajectory)
+// RCLCPP_COMPONENTS_REGISTER_NODE(JiwyTrajectory)
+
+int main(int argc, char * argv[])
+{
+  rclcpp::init(argc, argv);
+  rclcpp::spin(std::make_shared<JiwyTrajectory>());
+  rclcpp::shutdown();
+  return 0;
+}

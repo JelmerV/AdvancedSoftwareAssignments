@@ -1,0 +1,64 @@
+\hypertarget{classIcoConnection}{}\doxysection{Ico\+Connection Class Reference}
+\label{classIcoConnection}\index{IcoConnection@{IcoConnection}}
+Inheritance diagram for Ico\+Connection\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{classIcoConnection}
+\end{center}
+\end{figure}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+int \mbox{\hyperlink{classIcoConnection_af1f18f6eb838074ff7a1cee8f889b7b1}{send\+Double\+Array}} (double to\+Send\mbox{[}$\,$\mbox{]}, int port, int size) override
+\begin{DoxyCompactList}\small\item\em Xenomai I\+PC based send function for arrays. Send array to the supplied port. Function is set to M\+S\+G\+\_\+\+D\+O\+N\+T\+W\+A\+IT, therefore if no room in X\+D\+D\+P/\+I\+D\+DP buffer, send will be skipped. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{classIcoConnection_acb319972306457bd293535dff8e67a5b}{receive\+Double\+Array}} (double received\mbox{[}$\,$\mbox{]}, int size) override
+\end{DoxyCompactItemize}
+\doxysubsection*{Additional Inherited Members}
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{classIcoConnection_acb319972306457bd293535dff8e67a5b}\label{classIcoConnection_acb319972306457bd293535dff8e67a5b}} 
+\index{IcoConnection@{IcoConnection}!receiveDoubleArray@{receiveDoubleArray}}
+\index{receiveDoubleArray@{receiveDoubleArray}!IcoConnection@{IcoConnection}}
+\doxysubsubsection{\texorpdfstring{receiveDoubleArray()}{receiveDoubleArray()}}
+{\footnotesize\ttfamily int Ico\+Connection\+::receive\+Double\+Array (\begin{DoxyParamCaption}\item[{double}]{received\mbox{[}$\,$\mbox{]},  }\item[{int}]{size }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}}
+
+into a double array which represents the same information as the data from the F\+P\+GA. This assumes received is an\mbox{\Hypertarget{classIcoConnection_af1f18f6eb838074ff7a1cee8f889b7b1}\label{classIcoConnection_af1f18f6eb838074ff7a1cee8f889b7b1}} 
+\index{IcoConnection@{IcoConnection}!sendDoubleArray@{sendDoubleArray}}
+\index{sendDoubleArray@{sendDoubleArray}!IcoConnection@{IcoConnection}}
+\doxysubsubsection{\texorpdfstring{sendDoubleArray()}{sendDoubleArray()}}
+{\footnotesize\ttfamily int Ico\+Connection\+::send\+Double\+Array (\begin{DoxyParamCaption}\item[{double}]{to\+Send\mbox{[}$\,$\mbox{]},  }\item[{int}]{port,  }\item[{int}]{size }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Xenomai I\+PC based send function for arrays. Send array to the supplied port. Function is set to M\+S\+G\+\_\+\+D\+O\+N\+T\+W\+A\+IT, therefore if no room in X\+D\+D\+P/\+I\+D\+DP buffer, send will be skipped. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em to\+Send} & double array value which needs to be sent. \\
+\hline
+{\em size} & size of the double array. \\
+\hline
+{\em port} & X\+D\+D\+P/\+I\+D\+DP destination port \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+return value of the send function, -\/1 if failed. 
+\end{DoxyReturn}
+\begin{DoxySeeAlso}{See also}
+\mbox{\hyperlink{classxenoCommunication_a8a51629b904be642a5524927b11bc4da}{send\+Double(double to\+Send)}} 
+
+send\+Double(double to\+Send, int port, bool verbose) 
+
+send\+Double(double to\+Send, bool verbose) 
+\end{DoxySeeAlso}
+
+
+Reimplemented from \mbox{\hyperlink{classxenoCommunication_a8c5cbf07ccd57a7f54d5242da5c48d86}{xeno\+Communication}}.
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+framework/ico\+Comm\+Class.\+h\item 
+framework/ico\+Comm\+Class.\+cpp\end{DoxyCompactItemize}

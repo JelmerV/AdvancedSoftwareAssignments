@@ -1,0 +1,118 @@
+\hypertarget{classwrapper}{}\doxysection{wrapper$<$ T $>$ Class Template Reference}
+\label{classwrapper}\index{wrapper$<$ T $>$@{wrapper$<$ T $>$}}
+Inheritance diagram for wrapper$<$ T $>$\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{classwrapper}
+\end{center}
+\end{figure}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classwrapper_a5e23cac53139dceb9ec2cb05c02faf15}{wrapper}} (T $\ast$\+\_\+20simclass, \mbox{\hyperlink{classframeworkComm}{framework\+Comm}} $\ast$\+\_\+receive\+Class\mbox{[}$\,$\mbox{]}, \mbox{\hyperlink{classframeworkComm}{framework\+Comm}} $\ast$\+\_\+send\+Class\mbox{[}$\,$\mbox{]}, int \+\_\+receive\+Array\+Size, int \+\_\+send\+Array\+Size)
+\begin{DoxyCompactList}\small\item\em Construct a new wrapper object Init for the wrapper object which is a derivative of the virtual runnable class. This class will execute a 20-\/sim model. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classwrapper_a613b3ba427763a4804af780fa4a4e30d}{set\+Size}} (int \+\_\+u\+Size, int \+\_\+y\+Size)
+\begin{DoxyCompactList}\small\item\em sets Sizes. Set the sizes of the begin and end values and create their respective arrays. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classwrapper_af058297270a4079e775752f60628a3c4}\label{classwrapper_af058297270a4079e775752f60628a3c4}} 
+void {\bfseries set\+Verbose} (bool \+\_\+verbose)
+\item 
+void \mbox{\hyperlink{classwrapper_af79f5b7ba7efae36509b9c10f0d6f6e0}{prerun}} () override
+\begin{DoxyCompactList}\small\item\em Initialization function Prerun function containing all prerun functionality and initialization of the 20-\/sim-\/submodel. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classwrapper_a357c5e2a25f7ce258c9cdc8bb05c1339}{step}} () override
+\begin{DoxyCompactList}\small\item\em Single run step function Function which calculates the submodel for 1 timestep. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classwrapper_ad5c47f46967c2d672953b7dc240797f8}\label{classwrapper_ad5c47f46967c2d672953b7dc240797f8}} 
+void {\bfseries enable\+G\+P\+IO} (int pin) override
+\item 
+\mbox{\Hypertarget{classwrapper_aed60cdef2eede4bdb9ba2e30ac6748ad}\label{classwrapper_aed60cdef2eede4bdb9ba2e30ac6748ad}} 
+void {\bfseries run} () override
+\item 
+\mbox{\Hypertarget{classwrapper_ab077510ce208f5995b7aecd7e20c0557}\label{classwrapper_ab077510ce208f5995b7aecd7e20c0557}} 
+void {\bfseries postrun} () override
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{classwrapper_a5e23cac53139dceb9ec2cb05c02faf15}\label{classwrapper_a5e23cac53139dceb9ec2cb05c02faf15}} 
+\index{wrapper$<$ T $>$@{wrapper$<$ T $>$}!wrapper@{wrapper}}
+\index{wrapper@{wrapper}!wrapper$<$ T $>$@{wrapper$<$ T $>$}}
+\doxysubsubsection{\texorpdfstring{wrapper()}{wrapper()}}
+{\footnotesize\ttfamily template$<$typename T $>$ \\
+\mbox{\hyperlink{classwrapper}{wrapper}}$<$ T $>$\+::\mbox{\hyperlink{classwrapper}{wrapper}} (\begin{DoxyParamCaption}\item[{T $\ast$}]{\+\_\+20simclass,  }\item[{\mbox{\hyperlink{classframeworkComm}{framework\+Comm}} $\ast$}]{\+\_\+receive\+Class\mbox{[}$\,$\mbox{]},  }\item[{\mbox{\hyperlink{classframeworkComm}{framework\+Comm}} $\ast$}]{\+\_\+send\+Class\mbox{[}$\,$\mbox{]},  }\item[{int}]{\+\_\+receive\+Array\+Size,  }\item[{int}]{\+\_\+send\+Array\+Size }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Construct a new wrapper object Init for the wrapper object which is a derivative of the virtual runnable class. This class will execute a 20-\/sim model. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em \+\_\+20simclass} & The 20-\/sim object which needs to be run, is initialized in compiler time with a template. \\
+\hline
+{\em \+\_\+receive\+Class} & An array containing \mbox{\hyperlink{classframeworkComm}{framework\+Comm}} classes to receive the value before calculate() \\
+\hline
+{\em \+\_\+send\+Class} & An array containing \mbox{\hyperlink{classframeworkComm}{framework\+Comm}} classes to receive the value after calculate() \\
+\hline
+{\em \+\_\+receive\+Array\+Size} & The size of the receive\+Class array \\
+\hline
+{\em \+\_\+send\+Array\+Size} & The size of the send\+Class array \\
+\hline
+\end{DoxyParams}
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{classwrapper_af79f5b7ba7efae36509b9c10f0d6f6e0}\label{classwrapper_af79f5b7ba7efae36509b9c10f0d6f6e0}} 
+\index{wrapper$<$ T $>$@{wrapper$<$ T $>$}!prerun@{prerun}}
+\index{prerun@{prerun}!wrapper$<$ T $>$@{wrapper$<$ T $>$}}
+\doxysubsubsection{\texorpdfstring{prerun()}{prerun()}}
+{\footnotesize\ttfamily template$<$typename T $>$ \\
+void \mbox{\hyperlink{classwrapper}{wrapper}}$<$ T $>$\+::prerun (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Initialization function Prerun function containing all prerun functionality and initialization of the 20-\/sim-\/submodel. 
+
+
+
+Implements \mbox{\hyperlink{classrunnable}{runnable}}.
+
+\mbox{\Hypertarget{classwrapper_a613b3ba427763a4804af780fa4a4e30d}\label{classwrapper_a613b3ba427763a4804af780fa4a4e30d}} 
+\index{wrapper$<$ T $>$@{wrapper$<$ T $>$}!setSize@{setSize}}
+\index{setSize@{setSize}!wrapper$<$ T $>$@{wrapper$<$ T $>$}}
+\doxysubsubsection{\texorpdfstring{setSize()}{setSize()}}
+{\footnotesize\ttfamily template$<$typename T $>$ \\
+void \mbox{\hyperlink{classwrapper}{wrapper}}$<$ T $>$\+::set\+Size (\begin{DoxyParamCaption}\item[{int}]{\+\_\+u\+Size,  }\item[{int}]{\+\_\+y\+Size }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [virtual]}}
+
+
+
+sets Sizes. Set the sizes of the begin and end values and create their respective arrays. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em \+\_\+u\+Size} & sets the size for the receiving (begin) value. \\
+\hline
+{\em \+\_\+y\+Size} & sets the size for the sending (end) value. \\
+\hline
+\end{DoxyParams}
+
+
+Implements \mbox{\hyperlink{classrunnable}{runnable}}.
+
+\mbox{\Hypertarget{classwrapper_a357c5e2a25f7ce258c9cdc8bb05c1339}\label{classwrapper_a357c5e2a25f7ce258c9cdc8bb05c1339}} 
+\index{wrapper$<$ T $>$@{wrapper$<$ T $>$}!step@{step}}
+\index{step@{step}!wrapper$<$ T $>$@{wrapper$<$ T $>$}}
+\doxysubsubsection{\texorpdfstring{step()}{step()}}
+{\footnotesize\ttfamily template$<$typename T $>$ \\
+void \mbox{\hyperlink{classwrapper}{wrapper}}$<$ T $>$\+::step (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Single run step function Function which calculates the submodel for 1 timestep. 
+
+
+
+Implements \mbox{\hyperlink{classrunnable}{runnable}}.
+
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+framework/runnable\+Class.\+h\end{DoxyCompactItemize}

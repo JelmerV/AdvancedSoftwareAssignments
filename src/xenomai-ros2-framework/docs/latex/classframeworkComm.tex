@@ -1,0 +1,190 @@
+\hypertarget{classframeworkComm}{}\doxysection{framework\+Comm Class Reference}
+\label{classframeworkComm}\index{frameworkComm@{frameworkComm}}
+
+
+Class which provides top level access to X\+D\+D\+P/\+I\+D\+DP T\+O\+DO\+: Integrate with \mbox{\hyperlink{classxenoCommunication}{xeno\+Communication}} classes.  
+
+
+
+
+{\ttfamily \#include $<$multi\+Comm\+Class.\+h$>$}
+
+Inheritance diagram for framework\+Comm\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{classframeworkComm}
+\end{center}
+\end{figure}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+int \mbox{\hyperlink{classframeworkComm_a83cced9970db502b907214b2c137612f}{send}} (double value\mbox{[}$\,$\mbox{]})
+\begin{DoxyCompactList}\small\item\em Send value to predetermined port and with predetermined parameters. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{classframeworkComm_a333a33035a0b865bc079c496b10c1d9e}{receive}} (double value\mbox{[}$\,$\mbox{]})
+\begin{DoxyCompactList}\small\item\em Receive function which receives an array of data and writes it over the specified indexes of the output value. Port is pre-\/assigned. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classframeworkComm_ae362dc7e0ad4f972af36148b8df8950a}{set\+Verbose}} (bool verbose)
+\begin{DoxyCompactList}\small\item\em Set the function to be Verbose or not. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classframeworkComm_a337964bd41e84b6fd03401668bc57c74}{set\+Read\+Convert\+Fcn}} (Read\+Write\+Conversion\+Fcn $\ast$f)
+\begin{DoxyCompactList}\small\item\em Bind a Read\+Convert function to this communication class This is to provide Measurement\&Actuation functionality to the class. The Read\+Convert function could be used to perform scaling or filtering to the incoming signals prior to handing them over to the u\mbox{[}\mbox{]} variable of the 20-\/sim model. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classframeworkComm_ab9fd2c01711273aaa7b0c5df5125126e}{set\+Write\+Convert\+Fcn}} (Read\+Write\+Conversion\+Fcn $\ast$f)
+\begin{DoxyCompactList}\small\item\em Bind a Write\+Convert function to this communication class. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Protected Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classframeworkComm_a7e099483bceabb6cda7bb97ee155d4c4}\label{classframeworkComm_a7e099483bceabb6cda7bb97ee155d4c4}} 
+int $\ast$ {\bfseries send\+Parameters}
+\item 
+\mbox{\Hypertarget{classframeworkComm_aacb47bb9d91c5c9fb8d54faaadc61d3c}\label{classframeworkComm_aacb47bb9d91c5c9fb8d54faaadc61d3c}} 
+int $\ast$ {\bfseries receive\+Parameters}
+\item 
+\mbox{\Hypertarget{classframeworkComm_ade4151b60e66076c647ba3a858910d48}\label{classframeworkComm_ade4151b60e66076c647ba3a858910d48}} 
+int {\bfseries destination\+Port}
+\item 
+\mbox{\Hypertarget{classframeworkComm_a0a9a2e5ad4cf525576c08eb6835f21fa}\label{classframeworkComm_a0a9a2e5ad4cf525576c08eb6835f21fa}} 
+int {\bfseries receive\+Size}
+\item 
+\mbox{\Hypertarget{classframeworkComm_a2de08ee125994a11cd737c2e18539983}\label{classframeworkComm_a2de08ee125994a11cd737c2e18539983}} 
+int {\bfseries send\+Size}
+\item 
+\mbox{\Hypertarget{classframeworkComm_a78b78b655bddebb47e0f6317311b81f5}\label{classframeworkComm_a78b78b655bddebb47e0f6317311b81f5}} 
+\mbox{\hyperlink{classxenoCommunication}{xeno\+Communication}} $\ast$ {\bfseries xeno\+Comm\+Class}
+\item 
+\mbox{\Hypertarget{classframeworkComm_aafb6472596cac1e3852bf09e692b6e0d}\label{classframeworkComm_aafb6472596cac1e3852bf09e692b6e0d}} 
+bool {\bfseries verbose} = false
+\item 
+\mbox{\Hypertarget{classframeworkComm_a8a954e38c840e98a2f30c3750667f0c4}\label{classframeworkComm_a8a954e38c840e98a2f30c3750667f0c4}} 
+Read\+Write\+Conversion\+Fcn $\ast$ {\bfseries read\+Convert\+Fcn}
+\item 
+\mbox{\Hypertarget{classframeworkComm_a42d43d4b304e0739755bfae0e86abc13}\label{classframeworkComm_a42d43d4b304e0739755bfae0e86abc13}} 
+Read\+Write\+Conversion\+Fcn $\ast$ {\bfseries write\+Convert\+Fcn}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Class which provides top level access to X\+D\+D\+P/\+I\+D\+DP T\+O\+DO\+: Integrate with \mbox{\hyperlink{classxenoCommunication}{xeno\+Communication}} classes. 
+
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{classframeworkComm_a333a33035a0b865bc079c496b10c1d9e}\label{classframeworkComm_a333a33035a0b865bc079c496b10c1d9e}} 
+\index{frameworkComm@{frameworkComm}!receive@{receive}}
+\index{receive@{receive}!frameworkComm@{frameworkComm}}
+\doxysubsubsection{\texorpdfstring{receive()}{receive()}}
+{\footnotesize\ttfamily int framework\+Comm\+::receive (\begin{DoxyParamCaption}\item[{double}]{value\mbox{[}$\,$\mbox{]} }\end{DoxyParamCaption})}
+
+
+
+Receive function which receives an array of data and writes it over the specified indexes of the output value. Port is pre-\/assigned. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em value} & output array. \\
+\hline
+{\em parameters} & array filled with indexes of where the receives array is put. (in order of received array) \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+int\+: size of received values.
+\end{DoxyReturn}
+receive value to predetermined port and with predetermined parameters. Port is pre-\/assigned. 
+\begin{DoxyParams}{Parameters}
+{\em value} & array which is filled with values according to predetermined parameters. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+int\+: size of received values. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classframeworkComm_a83cced9970db502b907214b2c137612f}\label{classframeworkComm_a83cced9970db502b907214b2c137612f}} 
+\index{frameworkComm@{frameworkComm}!send@{send}}
+\index{send@{send}!frameworkComm@{frameworkComm}}
+\doxysubsubsection{\texorpdfstring{send()}{send()}}
+{\footnotesize\ttfamily int framework\+Comm\+::send (\begin{DoxyParamCaption}\item[{double}]{value\mbox{[}$\,$\mbox{]} }\end{DoxyParamCaption})}
+
+
+
+Send value to predetermined port and with predetermined parameters. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em value} & value which needs to be send. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+int\+: size of values send. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classframeworkComm_a337964bd41e84b6fd03401668bc57c74}\label{classframeworkComm_a337964bd41e84b6fd03401668bc57c74}} 
+\index{frameworkComm@{frameworkComm}!setReadConvertFcn@{setReadConvertFcn}}
+\index{setReadConvertFcn@{setReadConvertFcn}!frameworkComm@{frameworkComm}}
+\doxysubsubsection{\texorpdfstring{setReadConvertFcn()}{setReadConvertFcn()}}
+{\footnotesize\ttfamily void framework\+Comm\+::set\+Read\+Convert\+Fcn (\begin{DoxyParamCaption}\item[{Read\+Write\+Conversion\+Fcn $\ast$}]{f }\end{DoxyParamCaption})}
+
+
+
+Bind a Read\+Convert function to this communication class This is to provide Measurement\&Actuation functionality to the class. The Read\+Convert function could be used to perform scaling or filtering to the incoming signals prior to handing them over to the u\mbox{[}\mbox{]} variable of the 20-\/sim model. 
+
+Example\+: 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\textcolor{keywordtype}{void} MyReadConvert(\textcolor{keyword}{const} \textcolor{keywordtype}{double}* src, \textcolor{keywordtype}{double} *dst)}
+\DoxyCodeLine{\{}
+\DoxyCodeLine{    \textcolor{keyword}{static} \textcolor{keywordtype}{double} lastKnownGoodValue = 0;}
+\DoxyCodeLine{    \textcolor{comment}{// We assume that src is a 3 element double array, which has:}}
+\DoxyCodeLine{    \textcolor{comment}{// src[0] = temperature reading in degrees Fahrenheit (scaling) }}
+\DoxyCodeLine{    \textcolor{comment}{//          -\/> We want the output in degrees Celcius}}
+\DoxyCodeLine{    \textcolor{comment}{// src[1] = some measurement with unreliable communication; once}}
+\DoxyCodeLine{    \textcolor{comment}{//          in a while a (faulty) 0 is received; this should be }}
+\DoxyCodeLine{    \textcolor{comment}{//          filtered and the previous value should be passed (filtering)}}
+\DoxyCodeLine{    \textcolor{comment}{// src[2] = some good measurement which does not need }}
+\DoxyCodeLine{    \textcolor{comment}{//          scaling neither filtering}}
+\DoxyCodeLine{    \textcolor{comment}{//}}
+\DoxyCodeLine{    dst[0] = (src[0]-\/32.0) / 1.8; \textcolor{comment}{// scaling}}
+\DoxyCodeLine{}
+\DoxyCodeLine{    \textcolor{keywordflow}{if} ( src[1]!=0) \textcolor{comment}{// filtering}}
+\DoxyCodeLine{    \{}
+\DoxyCodeLine{       dst[1] = src[1];}
+\DoxyCodeLine{       lastKnownGoodValue = src[1];}
+\DoxyCodeLine{    \} \textcolor{keywordflow}{else}}
+\DoxyCodeLine{    \{}
+\DoxyCodeLine{       dst[1] = lastKnownGoodValue;}
+\DoxyCodeLine{    \}}
+\DoxyCodeLine{}
+\DoxyCodeLine{    dst[2] = src[2]; \textcolor{comment}{// passing}}
+\DoxyCodeLine{\}}
+\DoxyCodeLine{}
+\DoxyCodeLine{\textcolor{comment}{// Using the function (typically in some main/setup function):}}
+\DoxyCodeLine{\mbox{\hyperlink{classIcoComm}{IcoComm}} icoComm = \textcolor{keyword}{new} \mbox{\hyperlink{classIcoComm}{IcoComm}}(...);}
+\DoxyCodeLine{icoComm.SetReadConvertFcn(\&MyReadConvert);}
+\end{DoxyCode}
+ \mbox{\Hypertarget{classframeworkComm_ae362dc7e0ad4f972af36148b8df8950a}\label{classframeworkComm_ae362dc7e0ad4f972af36148b8df8950a}} 
+\index{frameworkComm@{frameworkComm}!setVerbose@{setVerbose}}
+\index{setVerbose@{setVerbose}!frameworkComm@{frameworkComm}}
+\doxysubsubsection{\texorpdfstring{setVerbose()}{setVerbose()}}
+{\footnotesize\ttfamily void framework\+Comm\+::set\+Verbose (\begin{DoxyParamCaption}\item[{bool}]{verbose }\end{DoxyParamCaption})}
+
+
+
+Set the function to be Verbose or not. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em verbose} & value of verbosity. \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classframeworkComm_ab9fd2c01711273aaa7b0c5df5125126e}\label{classframeworkComm_ab9fd2c01711273aaa7b0c5df5125126e}} 
+\index{frameworkComm@{frameworkComm}!setWriteConvertFcn@{setWriteConvertFcn}}
+\index{setWriteConvertFcn@{setWriteConvertFcn}!frameworkComm@{frameworkComm}}
+\doxysubsubsection{\texorpdfstring{setWriteConvertFcn()}{setWriteConvertFcn()}}
+{\footnotesize\ttfamily void framework\+Comm\+::set\+Write\+Convert\+Fcn (\begin{DoxyParamCaption}\item[{Read\+Write\+Conversion\+Fcn $\ast$}]{f }\end{DoxyParamCaption})}
+
+
+
+Bind a Write\+Convert function to this communication class. 
+
+\begin{DoxySeeAlso}{See also}
+\mbox{\hyperlink{classframeworkComm_a337964bd41e84b6fd03401668bc57c74}{set\+Read\+Convert\+Fcn}} 
+\end{DoxySeeAlso}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+framework/multi\+Comm\+Class.\+h\item 
+framework/multi\+Comm\+Class.\+cpp\end{DoxyCompactItemize}

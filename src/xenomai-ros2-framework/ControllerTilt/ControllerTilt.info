@@ -1,0 +1,54 @@
+ControllerTilt
+=============================================================
+
+INPUTS & OUTPUTS INDICES
+------------------------
+ 
+*** INPUTS ***
+
+	m_V[5] = u[0];		/* MeasuredTilt */
+	m_V[7] = u[1];		/* SetPointTilt */
+
+ 
+*** OUTPUTS ***
+
+	y[0] = 	m_V[6];		/* SteeringTilt */
+
+ 
+
+
+
+
+NAMES
+-----
+
+[CONSTANTS]
+	NULL
+[PARAMETERS]
+	"PID_Tilt\\kp",
+	"PID_Tilt\\tauD",
+	"PID_Tilt\\beta",
+	"PID_Tilt\\tauI"
+
+[VARIABLES]
+	"PID_Tilt\\output",
+	"PID_Tilt\\pdout",
+	"PlusMinus\\output",
+	"PlusMinus\\plus1",
+	"PlusMinus\\minus1",
+	"MeasuredTilt",
+	"SteeringTilt",
+	"SetPointTilt"
+
+[STATES]
+	"PID_Tilt\\pdstate",
+	"PID_Tilt\\pistate"
+
+[RATES]
+	"PID_Tilt\\pdrate",
+	"PID_Tilt\\pirate"
+
+[MATRICES]
+	NULL
+
+

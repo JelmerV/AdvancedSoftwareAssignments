@@ -1,0 +1,63 @@
+\hypertarget{classIcoIO}{}\doxysection{Ico\+IO Class Reference}
+\label{classIcoIO}\index{IcoIO@{IcoIO}}
+\doxysubsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+struct \mbox{\hyperlink{structIcoIO_1_1IcoRead}{Ico\+Read}}
+\item 
+struct \mbox{\hyperlink{structIcoIO_1_1IcoWrite}{Ico\+Write}}
+\end{DoxyCompactItemize}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classIcoIO_a55e07e5e605f553502de5ff0526bae9a}\label{classIcoIO_a55e07e5e605f553502de5ff0526bae9a}} 
+void {\bfseries set\+P\+WM} (uint8\+\_\+t channel, int16\+\_\+t value)
+\item 
+\mbox{\Hypertarget{classIcoIO_a443a988751c41b87e1c71cc49624fed8}\label{classIcoIO_a443a988751c41b87e1c71cc49624fed8}} 
+int {\bfseries read\+Enc} (uint8\+\_\+t channel)
+\item 
+\mbox{\Hypertarget{classIcoIO_a9783fc85700025e3490aff0ea04a64de}\label{classIcoIO_a9783fc85700025e3490aff0ea04a64de}} 
+size\+\_\+t {\bfseries update\+\_\+io} (\mbox{\hyperlink{structIcoIO_1_1IcoWrite}{Ico\+Write}} write\+\_\+val, \mbox{\hyperlink{structIcoIO_1_1IcoRead}{Ico\+Read}} $\ast$read\+\_\+val)
+\item 
+int \mbox{\hyperlink{classIcoIO_ad62d6f61f4243e771d1a54ee99af7761}{open\+\_\+spi}} ()
+\begin{DoxyCompactList}\small\item\em Open S\+PI port. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{classIcoIO_a88233b64656f15c4f76096579ca54065}{close\+\_\+spi}} ()
+\begin{DoxyCompactList}\small\item\em Close S\+PI Port. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classIcoIO_a5eec37ddab370e09fd677a026214b66a}\label{classIcoIO_a5eec37ddab370e09fd677a026214b66a}} 
+int {\bfseries init} ()
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{classIcoIO_a88233b64656f15c4f76096579ca54065}\label{classIcoIO_a88233b64656f15c4f76096579ca54065}} 
+\index{IcoIO@{IcoIO}!close\_spi@{close\_spi}}
+\index{close\_spi@{close\_spi}!IcoIO@{IcoIO}}
+\doxysubsubsection{\texorpdfstring{close\_spi()}{close\_spi()}}
+{\footnotesize\ttfamily int Ico\+I\+O\+::close\+\_\+spi (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Close S\+PI Port. 
+
+\begin{DoxyReturn}{Returns}
+int\+: 1 (success) (cannot fail) 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classIcoIO_ad62d6f61f4243e771d1a54ee99af7761}\label{classIcoIO_ad62d6f61f4243e771d1a54ee99af7761}} 
+\index{IcoIO@{IcoIO}!open\_spi@{open\_spi}}
+\index{open\_spi@{open\_spi}!IcoIO@{IcoIO}}
+\doxysubsubsection{\texorpdfstring{open\_spi()}{open\_spi()}}
+{\footnotesize\ttfamily int Ico\+I\+O\+::open\+\_\+spi (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Open S\+PI port. 
+
+\begin{DoxyReturn}{Returns}
+int\+: 0 on failure; 1 on success 
+\end{DoxyReturn}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+framework/ico\+\_\+io.\+h\item 
+framework/ico\+\_\+io.\+cpp\end{DoxyCompactItemize}

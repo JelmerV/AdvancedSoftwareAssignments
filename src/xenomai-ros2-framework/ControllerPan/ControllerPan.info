@@ -1,0 +1,54 @@
+ControllerPan
+=============================================================
+
+INPUTS & OUTPUTS INDICES
+------------------------
+ 
+*** INPUTS ***
+
+	m_V[5] = u[0];		/* MeasuredPan */
+	m_V[7] = u[1];		/* SetPointPan */
+
+ 
+*** OUTPUTS ***
+
+	y[0] = 	m_V[6];		/* SteeringPan */
+
+ 
+
+
+
+
+NAMES
+-----
+
+[CONSTANTS]
+	NULL
+[PARAMETERS]
+	"PID_Pan\\kp",
+	"PID_Pan\\tauD",
+	"PID_Pan\\beta",
+	"PID_Pan\\tauI"
+
+[VARIABLES]
+	"PID_Pan\\output",
+	"PID_Pan\\pdout",
+	"PlusMinus1\\output",
+	"PlusMinus1\\plus1",
+	"PlusMinus1\\minus1",
+	"MeasuredPan",
+	"SteeringPan",
+	"SetPointPan"
+
+[STATES]
+	"PID_Pan\\pdstate",
+	"PID_Pan\\pistate"
+
+[RATES]
+	"PID_Pan\\pdrate",
+	"PID_Pan\\pirate"
+
+[MATRICES]
+	NULL
+
+

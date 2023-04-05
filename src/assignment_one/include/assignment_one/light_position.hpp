@@ -4,7 +4,7 @@
 
 // ROS2 includes.
 #include "rclcpp/rclcpp.hpp"
-#include "rclcpp_components/register_node_macro.hpp"
+// #include "rclcpp_components/register_node_macro.hpp"
 
 // ROS2 Message includes.
 #include "sensor_msgs/msg/image.hpp"
@@ -17,7 +17,8 @@ using std::placeholders::_1;
 
 class LightPosition : public rclcpp::Node {
     public:
-        LightPosition(const rclcpp::NodeOptions & options);
+        // LightPosition(const rclcpp::NodeOptions & options);
+        LightPosition();
     private:
         using image_  = sensor_msgs::msg::Image;
         using point2_ = asdfr_interfaces::msg::Point2;

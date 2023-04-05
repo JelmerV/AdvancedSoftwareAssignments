@@ -9,7 +9,8 @@
 #include "assignment_one/light_position.hpp"
 #include "assignment_one/constants.hpp"
 
-LightPosition::LightPosition(const rclcpp::NodeOptions & options) : Node("light_position", options) {
+// LightPosition::LightPosition(const rclcpp::NodeOptions & options) : Node("light_position", options) {
+LightPosition::LightPosition() : Node("light_position") {
     // Parse parameters.
     parse_parameters();
 
@@ -102,4 +103,12 @@ void LightPosition::image_callback(const image_::SharedPtr img) {
     pub_mono_img_->publish(img_mono);
 }
 
-RCLCPP_COMPONENTS_REGISTER_NODE(LightPosition)
+// RCLCPP_COMPONENTS_REGISTER_NODE(LightPosition)
+
+int main(int argc, char * argv[])
+{
+  rclcpp::init(argc, argv);
+  rclcpp::spin(std::make_shared<LightPosition>());
+  rclcpp::shutdown();
+  return 0;
+}
