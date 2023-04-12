@@ -9,6 +9,7 @@
 // ROS2 Message includes.
 #include "sensor_msgs/msg/image.hpp"
 #include "asdfr_interfaces/msg/point2.hpp"
+#include "std_msgs/msg/float64.hpp"
 
 #ifndef JIWY_TRAJECTORY_HPP
 #define JIWY_TRAJECTORY_HPP
@@ -49,6 +50,8 @@ class JiwyTrajectory : public rclcpp::Node {
         rclcpp::Subscription<image_>::SharedPtr sub_mono_img_;
         rclcpp::Subscription<point2_>::SharedPtr sub_img_cog_;
         rclcpp::Publisher<point2_>::SharedPtr pub_setpoint_;
+        rclcpp::Publisher<std_msgs::msg::Float64>::SharedPtr pub_setpoint_pan_;
+        rclcpp::Publisher<std_msgs::msg::Float64>::SharedPtr pub_setpoint_tilt_;
 };
 
 #endif /* JIWY_TRAJECTORY_HPP */

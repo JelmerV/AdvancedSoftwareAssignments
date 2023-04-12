@@ -5,6 +5,7 @@
 // ROS2 Message includes.
 #include "rcl_interfaces/msg/parameter_descriptor.hpp"
 #include "rcl_interfaces/msg/integer_range.hpp"
+#include "std_msgs/msg/float64.hpp"
 
 // ROS2 internal includes.
 #include "assignment_one/jiwy_trajectory.hpp"
@@ -17,6 +18,8 @@ JiwyTrajectory::JiwyTrajectory() : Node("jiwy_trajectory") {
 
     // Create publishers.
     pub_setpoint_ = this->create_publisher<point2_>("setpoint", 1);
+    pub_setpoint_pan_ = this->create_publisher<std_msgs::msg::Float64>("setpoint_pan", 1);
+    pub_setpoint_tilt_ = this->create_publisher<std_msgs::msg::Float64>("setpoint_tilt", 1);
 
     // Check whether the parameter 'use_camera' is true. If not, initialise a wall timer to use for publishing setpoint values.
     if (use_camera_) {
@@ -116,6 +119,13 @@ void JiwyTrajectory::image_cog_callback(const point2_::SharedPtr img_cog) {
     // Publish setpoint based on thresholded mono image.
     RCLCPP_INFO(this->get_logger(), "Publishing setpoint: (%f, %f)", pub_msg.x, pub_msg.y);
     pub_setpoint_->publish(pub_msg);
+
+    // convert radians to individual topics as a std msg float64
+    std_msgs::msg::Float64 double_msg;
+    double_msg.data = pub_msg.x;
+    pub_setpoint_pan_->publish(double_msg);
+    double_msg.data = pub_msg.y;
+    pub_setpoint_tilt_->publish(double_msg);
 }
 
 // RCLCPP_COMPONENTS_REGISTER_NODE(JiwyTrajectory)
