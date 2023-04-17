@@ -85,6 +85,17 @@ void JiwyTrajectory::timer_callback()
     // Publish message.
     RCLCPP_INFO(this->get_logger(), "Publishing setpoint: (%f, %f)", pub_msg.x, pub_msg.y);
     pub_setpoint_->publish(pub_msg);
+
+    // Publish individual axes as a Float64 message.
+    std_msgs::msg::Float64 double_msg;
+    
+    double_msg.data = pub_msg.x;
+    RCLCPP_INFO(this->get_logger(), "Publishing setpoint pan: (%f)", double_msg.data);
+    pub_setpoint_pan_->publish(double_msg);
+
+    double_msg.data = pub_msg.y;
+    RCLCPP_INFO(this->get_logger(), "Publishing setpoint tilt: (%f)", double_msg.data);
+    pub_setpoint_tilt_->publish(double_msg);
 }
 
 void JiwyTrajectory::image_data_callback(const image_::SharedPtr img) {
@@ -120,11 +131,15 @@ void JiwyTrajectory::image_cog_callback(const point2_::SharedPtr img_cog) {
     RCLCPP_INFO(this->get_logger(), "Publishing setpoint: (%f, %f)", pub_msg.x, pub_msg.y);
     pub_setpoint_->publish(pub_msg);
 
-    // convert radians to individual topics as a std msg float64
+    // Convert radians to individual topics as a Float64 message.
     std_msgs::msg::Float64 double_msg;
+    
     double_msg.data = pub_msg.x;
+    RCLCPP_INFO(this->get_logger(), "Publishing setpoint pan: (%f)", double_msg.data);
     pub_setpoint_pan_->publish(double_msg);
+
     double_msg.data = pub_msg.y;
+    RCLCPP_INFO(this->get_logger(), "Publishing setpoint tilt: (%f)", double_msg.data);
     pub_setpoint_tilt_->publish(double_msg);
 }
 

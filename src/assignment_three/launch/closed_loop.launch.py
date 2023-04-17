@@ -1,6 +1,9 @@
 from launch import LaunchDescription
 from launch_ros.actions import Node
 
+# import os
+# os.system('../src/xenomai-ros2-framework/build/jiwy')
+
 def generate_launch_description():
     nodes = [
         # Add the 'light_position' Node with the camera enabled and the 'image' topic remapped to 'webcam_input'.
@@ -26,12 +29,12 @@ def generate_launch_description():
             package = 'closed_loop',
             executable = 'controller',
             parameters = [
-                {'tau_s': 1.0}
-            ]
+                {'tau_s': 1.0},
+            ],
             remappings = [
-                ('cog_input', 'image_cog')
+                ('cog_input', 'image_cog'),
             ]
-        )
+        ),
         # Add the 'cam2image' Node with the 'image' topic remapped to 'webcam_input'.
         Node(
             package = 'image_tools', 
@@ -62,10 +65,45 @@ def generate_launch_description():
                 ('image', 'moving_camera_output'),
             ],
         ),
-        # Add the 'jiwy_simulator' Node.
+
+        # listens to setpoint for framework
         Node(
-            package = 'jiwy_simulator', 
-            executable = 'jiwy_simulator',
+            package = 'ros2-xenomai',
+            executable = 'listener',
+            name = 'xeno_listener_pan',
+            parameters = [
+                {'topicName': 'setpoint_pan'},
+                {'xdppPort': 10}
+            ]
         ),
+        # Node(
+        #     package = 'ros2-xenomai',
+        #     executable = 'listener',
+        #     name = 'xeno_listener_tilt',
+        #     parameters = [
+        #         {'topicName': 'setpoint_tilt'},
+        #         {'xdppPort': 11},
+        #     ]
+        # ),
+
+        # publishes measured position
+        Node(
+            package = 'ros2-xenomai',
+            executable = 'talker',
+            name = 'xeno_talker_pan',
+            parameters = [
+                {'topicName': 'position_pan'},
+                {'xdppPort': 20},
+            ],
+        ),
+        # Node(
+        #     package = 'ros2-xenomai',
+        #     executable = 'talker',
+        #     name = 'xeno_talker_tilt',
+        #     parameters = [
+        #         {'topicName': 'position_tilt'},
+        #         {'xdppPort': 21},
+        #     ],
+        # )
     ]
     return LaunchDescription(nodes)

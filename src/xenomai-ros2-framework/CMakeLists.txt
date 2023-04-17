@@ -108,13 +108,16 @@ target_include_directories(class_libaries PRIVATE ${XENOMAI_POSIX_INCLUDE_DIRS})
 target_link_libraries(class_libaries PRIVATE ${XENOMAI_POSIX_LIBRARIES})
 target_compile_definitions(class_libaries PRIVATE ${XENOMAI_POSIX_DEFINITIONS})
 
+FILE(GLOB common_files ${CMAKE_CURRENT_SOURCE_DIR}/ControllerPan/common/*.cpp)
+list(APPEND common_list ${common_files})
+add_library(common_libraries ${common_list})
 
 # Recipe for your own program
 # If you have multiple cpp files (e.g., also generated code from 20-sim), add
 # them to the first line, e.g.,
 # add_executable(jiwy ${CMAKE_CURRENT_SOURCE_DIR} main.cpp model.cpp)
-add_executable(jiwy ${CMAKE_CURRENT_SOURCE_DIR} jiwy_main.cpp)
-target_link_libraries(jiwy PRIVATE  class_libaries) # Use the Meijer framework
+add_executable(jiwy ${CMAKE_CURRENT_SOURCE_DIR} jiwy_main.cpp ControllerPan/ControllerPan.cpp)
+target_link_libraries(jiwy PRIVATE  class_libaries common_libraries) # Use the Meijer framework
 target_include_directories(jiwy PRIVATE ${XENOMAI_POSIX_INCLUDE_DIRS}) # For Xenomai
 target_compile_definitions(jiwy PRIVATE ${XENOMAI_POSIX_DEFINITIONS}) # For Xenomai
 

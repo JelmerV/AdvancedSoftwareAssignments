@@ -2,7 +2,7 @@
 <?xml-model href="http://download.ros.org/schema/package_format3.xsd" schematypens="http://www.w3.org/2001/XMLSchema"?>
 <package format="3">
     <name>assignment_one</name>
-    <version>1.0.0</version>
+    <version>1.1.0</version>
     <description>This package contains three nodes that were designed for the assignments of the first assignment set of Advanced Software Development for Robotics.</description>
     <maintainer email="jvolbeda22@gmail.com">Jelmer Volbeda</maintainer>
     <maintainer email="j.h.j.pott@student.utwente.nl">Jurrijn Pott</maintainer>
